@@ -2,6 +2,7 @@ require 'sinatra'
 require 'rest-client'
 require 'byebug'
 
-get '/' do
+post '/' do
   puts params
+  return params
 end
