@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'rexml/document'
 
 CLIENT_ID       = 'slack_translate_bot'
 CLIENT_SECRET   = ENV['MICROSOFT_TRANSLATE_CLIENT_SECRET']
@@ -14,7 +15,8 @@ class MicrosoftTranslator
       url: "#{TRANSLATION_URL}?from=ja&to=en&text=#{CGI.escape(text)}",
       headers: {Authorization: "Bearer #{token}"}
     )
-    response
+    xml = REXML::Document.new(response)
+    xml.root.text
   end
 
   def self.get_access_token
