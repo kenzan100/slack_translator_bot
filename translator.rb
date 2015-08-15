@@ -11,7 +11,7 @@ class MicrosoftTranslator
   def self.translate_text(text)
     token = get_access_token
     response = RestClient::Request.execute(method: :get,
-      url: "#{TRANSLATION_URL}?from=en&to=ja&text=#{CGI.escape(text)}",
+      url: "#{TRANSLATION_URL}?from=ja&to=en&text=#{CGI.escape(text)}",
       headers: {Authorization: "Bearer #{token}"}
     )
     response
