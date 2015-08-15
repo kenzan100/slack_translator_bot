@@ -25,7 +25,7 @@ post '/' do
     m_hash["text"]
   end
 
-  texts = text_arr.join(" ")
-  translated_texts = MicrosoftTranslator.translate_text(texts)
+  texts = text_arr.join("\n\n")
+  translated_texts = MicrosoftTranslator.translate_single_text(texts)
   return translated_texts
 end
